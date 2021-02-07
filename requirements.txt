@@ -1,7 +1,6 @@
 django
 gunicorn
 django-heroku
-django-celery
 django-jsonfield
 requests
 django-s3direct
@@ -15,7 +14,6 @@ noisereduce
 numpy
 pydub
 librosa
-celery
 eyed3
 hmmlearn
 ffprobe
