@@ -7,7 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect, Http404
 
 from .hotline_stats import combo_stats, get_local_code, get_test_numbers, get_city_from_hotline
-from .transcriber_stats_helper import get_trans_stats
+from .transcriber_stats import get_trans_stats
 from .language_stats import get_languages_over_time, get_specific_language_over_time
 from .languages_stats import get_unknown_stats, new_languages_over_time, new_languages_over_time_agg
 
