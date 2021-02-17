@@ -14,9 +14,7 @@ import requests, json, csv
 import os, io
 import random as rand
 import hashlib
-from rq import Queue
 from datetime import datetime
-import pickle
 import logging
 import urllib
 from django.core.files.storage import default_storage

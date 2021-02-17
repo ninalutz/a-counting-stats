@@ -42,10 +42,6 @@ def stats(request, city, start_month, start_day, end_month, end_day):
 #Gets language stats over time from a city
 @csrf_exempt
 def languages_stats(request, city, start_month, start_day, end_month, end_day):
-    try:
-        print("Queue lengths: " + str(len(q.jobs)) + " " +  str(len(q2.jobs)) + " " +  str(len(q3.jobs)))
-    except:
-        print("Error printing queue length")
     start = datetime(2020, int(start_month), int(start_day), 0, 0, 0)
     end = datetime(2020, int(end_month), int(end_day), 0, 0, 0)
     out = get_languages_over_time(city, start, end)
@@ -53,10 +49,6 @@ def languages_stats(request, city, start_month, start_day, end_month, end_day):
 
 @csrf_exempt
 def new_languages_stats(request, start_month, start_day, end_month, end_day):
-    try:
-        print("Queue lengths: " + str(len(q.jobs)) + " " +  str(len(q2.jobs)) + " " +  str(len(q3.jobs)))
-    except:
-        print("Error printing queue length")
     start = datetime(2020, int(start_month), int(start_day), 0, 0, 0)
     end = datetime(2020, int(end_month), int(end_day), 0, 0, 0)
     out = new_languages_over_time(start, end)
@@ -64,10 +56,6 @@ def new_languages_stats(request, start_month, start_day, end_month, end_day):
 
 @csrf_exempt
 def new_languages_agg(request, start_month, start_day, end_month, end_day, delta):
-    try:
-        print("Queue lengths: " + str(len(q.jobs)) + " " +  str(len(q2.jobs)) + " " +  str(len(q3.jobs)))
-    except:
-        print("Error printing queue length")
     start = datetime(2020, int(start_month), int(start_day), 0, 0, 0)
     end = datetime(2020, int(end_month), int(end_day), 0, 0, 0)
     out = new_languages_over_time_agg(start, end, delta)
