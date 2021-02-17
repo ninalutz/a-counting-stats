@@ -59,7 +59,8 @@ def get_untranscribed_languages():
 		raw_trans = list(Transcription.objects.filter(language=l))
 		if not raw_trans or len(raw_trans) == 0:
 			language_list.append(l.name)
-	return language_list.sort()
+	language_list.sort()
+	return language_list
 
 def get_user_date(participant, end_date):
 	try:
