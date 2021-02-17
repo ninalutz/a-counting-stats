@@ -53,6 +53,7 @@ Returns list of names of languages with no transcriptions
 """
 def get_untranscribed_languages():
 	language_list = []
+	language_dict_list = []
 	languages = list(Language.objects.all().order_by('name'))
 
 	for l in languages:
@@ -60,7 +61,11 @@ def get_untranscribed_languages():
 		if not raw_trans or len(raw_trans) == 0:
 			language_list.append(l.name)
 	language_list.sort()
-	return language_list
+	for l in language_list:
+		lang_dict = {"Name": l}
+		language_dict_list.append(lang_dict)
+
+	return language_dict_list
 
 def get_user_date(participant, end_date):
 	try:
