@@ -1,5 +1,5 @@
 # A Counting Stats
-
+Skylar Learning Git
 A barebones Django app, which can easily be deployed to Heroku. Meant for doing stats analysis for A Counting by the Poetic Justice Group.
 
 This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
