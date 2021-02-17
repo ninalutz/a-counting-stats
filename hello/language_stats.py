@@ -56,7 +56,7 @@ def get_untranscribed_languages():
 	languages = list(Language.objects.all().order_by('name'))
 
 	for l in languages:
-		raw_trans = list(Transcription.objects.filter(language=l, created_at__gte=start_date, created_at__lte=end_date))
+		raw_trans = list(Transcription.objects.filter(language=l))
 		if not raw_trans or len(raw_trans) == 0:
 			languages.remove(l)
 		else:
