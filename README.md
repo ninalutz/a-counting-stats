@@ -1,6 +1,6 @@
-# Python: Getting Started
+# A Counting Stats
 
-A barebones Django app, which can easily be deployed to Heroku.
+A barebones Django app, which can easily be deployed to Heroku. Meant for doing stats analysis for A Counting by the Poetic Justice Group.
 
 This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
 
@@ -25,18 +25,14 @@ $ heroku local
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
-## Deploying to Heroku
+
+## Deploying to Heroku - Prod
 
 ```sh
-$ heroku create
-$ git push heroku main
-
-$ heroku run python manage.py migrate
+$ heroku run python manage.py makemigrations -a a-counting-stats
+$ heroku run python manage.py migrate -a a-counting-stats
 $ heroku open
 ```
-or
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Documentation
 
