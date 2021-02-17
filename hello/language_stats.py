@@ -47,6 +47,22 @@ from .models import Call, Recording, Number, Language, Transcription, City, Part
 
 env = os.getenv('ENVIRONMENT', default='dev')
 
+
+"""
+Returns list of names of languages with no transcriptions
+"""
+def get_untranscribed_languages():
+	language_list = []
+	languages = list(Language.objects.all().order_by('name'))
+
+	for l in languages:
+		raw_trans = list(Transcription.objects.filter(language=l, created_at__gte=start_date, created_at__lte=end_date))
+		if not raw_trans or len(raw_trans) == 0:
+			languages.remove(l)
+		else:
+			languages_to_process.append(l)		
+	return language_list
+
 def get_user_date(participant, end_date):
 	try:
 		if participant: 
@@ -89,6 +105,7 @@ def stringify_list(list_to_convert):
 				out_string += ", "
 		return out_string
 	return str(list_to_convert[0])
+
 
 """
 Goal: Get specific language over time 
