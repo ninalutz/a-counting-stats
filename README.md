@@ -23,6 +23,8 @@ $ python manage.py collectstatic
 $ heroku local
 ```
 
+###MAKE SURE TO CHECK ACCESS KEYS G DOC for instructions
+
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
 
@@ -32,6 +34,12 @@ Your app should now be running on [localhost:5000](http://localhost:5000/).
 $ heroku run python manage.py makemigrations -a a-counting-stats
 $ heroku run python manage.py migrate -a a-counting-stats
 $ heroku open
+```
+
+## Handling busy port on local
+```sh
+$ lsof -i:5000
+$ kill -9 <PID>
 ```
 
 ## Documentation

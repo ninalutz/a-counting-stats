@@ -10,8 +10,8 @@ import zipcodes
 from .models import Call, Recording, Number, Language, Transcription, City, Participant, MergedAudio
 
 #Twilio Imports
-account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+account_sid = ""
+auth_token = ""
 twilio_api_header = 'https://%s:%s@api.twilio.com' % (account_sid, auth_token)
 
 client = Client(account_sid, auth_token)

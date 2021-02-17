@@ -3,7 +3,6 @@
 # Languages: List of languages (in order of transcription)
 # Calls: List of call # per languages
 
-from twilio.rest import Client
 from datetime import datetime, timedelta
 import math
 import os
@@ -42,12 +41,6 @@ from django.utils.html import strip_tags
 
 from .models import Call, Recording, Number, Language, Transcription, City, Participant, MergedAudio
 
-#Twilio Imports
-account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-twilio_api_header = 'https://%s:%s@api.twilio.com' % (account_sid, auth_token)
-
-client = Client(account_sid, auth_token)
 
 def get_user_date(participant, end_date):
 	try:

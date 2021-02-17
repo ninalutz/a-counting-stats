@@ -3,7 +3,6 @@
 # Languages: List of languages (in order of transcription)
 # Calls: List of call # per languages
 
-from twilio.rest import Client
 from datetime import datetime, timedelta
 import math
 import calendar
@@ -47,16 +46,8 @@ from django.utils.html import strip_tags
 from collections import OrderedDict 
 
 from .models import Call, Recording, Number, Language, Transcription, City, Participant, MergedAudio
-from .archives import get_archive
 
 env = os.getenv('ENVIRONMENT', default='dev')
-
-#Twilio Imports
-account_sid = os.getenv('TWILIO_ACCOUNT_SID')
-auth_token = os.getenv('TWILIO_AUTH_TOKEN')
-twilio_api_header = 'https://%s:%s@api.twilio.com' % (account_sid, auth_token)
-
-client = Client(account_sid, auth_token)
 
 def get_user_date(participant, end_date):
 	try:
@@ -367,28 +358,3 @@ def load_json(aws_path):
     file = default_storage.open(aws_path).read()
     output = json.loads(file)
     return output
-
-def fill_unknown_archives():
-	out = load_json("unknown_languages.json")
-	data_update = get_archive()
-	for d in data_update["Dates"]:
-		transcriber = Participant.objects.filter(hash_id=d["Transcriber ID"])[0]
-		call = Call.objects.filter(hash_id=d["Call ID"])[0]
-		if transcriber:
-			if call:
-				language_code = call.language_code
-				language = Language.objects.filter(code=language_code)[0]
-				year = int(d["Date"].split("-")[0])
-				month = int(d["Date"].split("-")[1])
-				day = int(d["Date"].split("-")[2])
-				date = datetime(year, month, day, 0, 0, 0)
-				user_dict = {"Recorded on": get_call_date(call),
-					"Transcribed on": date.strftime("%m/%d/%Y"), 
-					"Call ID": call.hash_id, 
-					"Caller": was_caller(transcriber, call), 
-					"Language transcribed": language.name}
-				if user_dict not in out["languages"]:
-					out["languages"].append(user_dict)
-	out["languages"] = sorted(out["languages"], key=lambda k: k["Transcribed on"]) 
-	save_json("unknown_languages", out)
-
