@@ -23,7 +23,7 @@ $ python manage.py collectstatic
 $ heroku local
 ```
 
-###MAKE SURE TO CHECK ACCESS KEYS G DOC for instructions
+##Check Access Keys G Doc for instructions on hotline_stats.py
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
