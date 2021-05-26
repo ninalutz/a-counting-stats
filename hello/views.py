@@ -34,7 +34,7 @@ TODO: Add a year parameter //added 2/20/21
 Test links: *will change*
 """
 @csrf_exempt
-def stats(request, city, start_year, start_month, start_day, end_year, end_month, end_day):
+def stats(request, city, start_month, start_day, start_year, end_month, end_day, end_year):
     out = {}
     start = datetime(int(start_year), int(start_month), int(start_day), 0, 0, 0)
     end = datetime(int(end_year), int(end_month), int(end_day), 0, 0, 0)
@@ -48,7 +48,7 @@ Gets language stats over time from a city -- New transcripts by month sheet
 TODO: Add a year parameter //added 2/20/21
 """
 @csrf_exempt
-def languages_stats(request, city, start_year, start_month, start_day, end_year, end_month, end_day):
+def languages_stats(request, city, start_month, start_day, start_year, end_month, end_day, end_year):
     start = datetime(int(start_year), int(start_month), int(start_day), 0, 0, 0)
     end = datetime(int(end_year), int(end_month), int(end_day), 0, 0, 0)
     out = get_languages_over_time(city, start, end)
@@ -60,7 +60,7 @@ Tells us languages that were added in a date range -- New languages sheet
 TODDO: Add a year parameter //added 2/20/21
 """
 @csrf_exempt
-def new_languages_stats(request, start_year, start_month, start_day, end_year, end_month, end_day):
+def new_languages_stats(request, start_month, start_day, start_year, end_month, end_day, end_year):
     start = datetime(int(start_year), int(start_month), int(start_day), 0, 0, 0)
     end = datetime(int(end_year), int(end_month), int(end_day), 0, 0, 0)
     out = new_languages_over_time(start, end)
@@ -71,7 +71,7 @@ Returns transcriber stats for "New transcripts" sheet
 TODO: Add year param //added 2/20/21
 """
 @csrf_exempt
-def transcriber_stats(request, start_year, start_month, start_day, end_year, end_month, end_day):
+def transcriber_stats(request, start_month, start_day, start_year, end_month, end_day, end_year):
     out = {}
     start = datetime(int(start_year), int(start_month), int(start_day), 0, 0, 0)
     end = datetime(int(end_year), int(end_month), int(end_day), 0, 0, 0)
